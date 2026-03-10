@@ -5,7 +5,7 @@
 #SBATCH --time=24:00:00
 #SBATCH --mem=32G
 #SBATCH --cpus-per-task=4
-#SBATCH --array=1-132
+#SBATCH --array=1-1
 #SBATCH --output=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/bams_with_rg/add_rg_%A_%a.out
 #SBATCH --error=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/bams_with_rg/add_rg_%A_%a.err
 

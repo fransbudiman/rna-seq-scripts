@@ -5,7 +5,7 @@
 #SBATCH --time=48:00:00
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
-#SBATCH --array=1-66
+#SBATCH --array=1-1
 #SBATCH --output=logs/funcotator_%A_%a.out
 #SBATCH --error=logs/funcotator_%A_%a.err
 

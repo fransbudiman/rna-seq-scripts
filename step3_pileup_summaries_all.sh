@@ -5,7 +5,7 @@
 #SBATCH --time=24:00:00
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
-#SBATCH --array=1-66
+#SBATCH --array=1-1
 #SBATCH --output=/scratch/frans/rna-seq/logs/pileup_%A_%a.out
 #SBATCH --error=/scratch/frans/rna-seq/logs/pileup_%A_%a.err
 

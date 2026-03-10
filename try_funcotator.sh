@@ -5,7 +5,7 @@
 #SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
-#SBATCH --array=1-66%20
+#SBATCH --array=1-1
 #SBATCH --output=logs/pass_funcotator_%A_%a.log
 
 # Extract PASS variants + Annotate with Funcotator
