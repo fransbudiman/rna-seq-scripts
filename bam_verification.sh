@@ -6,7 +6,7 @@ echo "BAM File Verification and Sample Preparation"
 echo "=========================================="
 
 # Load modules and configuration
-source /scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/resource_paths.sh
+source /scratch/frans/rna-seq/resources/resource_paths.sh
 
 cd $WORK_DIR
 

@@ -3,8 +3,8 @@
 
 module load samtools/1.18
 
-TUMOR_BAM="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg/24-13263-A-02-00_with_rg.bam"
-NORMAL_BAM="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg/24-12924-A-02-00_with_rg.bam"
+TUMOR_BAM="/scratch/frans/rna-seq/bams_with_rg/24-13263-A-02-00_with_rg.bam"
+NORMAL_BAM="/scratch/frans/rna-seq/bams_with_rg/24-12924-A-02-00_with_rg.bam"
 
 echo "Checking mapping quality (MAPQ) values in BAMs"
 echo "=============================================="

@@ -7,11 +7,11 @@ echo "======================================"
 echo ""
 
 # Source resource paths
-source /scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/resource_paths_with_rg.sh
+source /scratch/frans/rna-seq/resources/resource_paths_with_rg.sh
 
 # Pair 30 details
-TUMOR_BAM="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg/24-13263-A-02-00_with_rg.bam"
-NORMAL_BAM="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg/24-12924-A-02-00_with_rg.bam"
+TUMOR_BAM="/scratch/frans/rna-seq/bams_with_rg/24-13263-A-02-00_with_rg.bam"
+NORMAL_BAM="/scratch/frans/rna-seq/bams_with_rg/24-12924-A-02-00_with_rg.bam"
 TUMOR_NAME="24-13263-A-02-00"
 NORMAL_NAME="24-12924-A-02-00"
 PON="${WORK_DIR}/results/pon/final/rnaseq_panel_of_normals.vcf.gz"

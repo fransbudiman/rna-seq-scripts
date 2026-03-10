@@ -9,7 +9,7 @@ module load StdEnv/2023
 module load gatk
 module load samtools
 
-RESOURCE_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources"
+RESOURCE_DIR="/scratch/frans/rna-seq/resources"
 mkdir -p $RESOURCE_DIR
 
 echo "Resource directory: $RESOURCE_DIR"
@@ -84,11 +84,11 @@ module load samtools
 export REFERENCE="/cvmfs/ref.mugqic/genomes/species/Homo_sapiens.GRCh38/genome/Homo_sapiens.GRCh38.fa"
 
 # Population variants (downloaded)
-export GNOMAD="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/af-only-gnomad.hg38.vcf.gz"
+export GNOMAD="/scratch/frans/rna-seq/resources/af-only-gnomad.hg38.vcf.gz"
 
 # Calling intervals (downloaded, or will create our own if download failed)
-if [ -f "/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/wgs_calling_regions.hg38.interval_list" ]; then
-    export INTERVALS="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/wgs_calling_regions.hg38.interval_list"
+if [ -f "/scratch/frans/rna-seq/resources/wgs_calling_regions.hg38.interval_list" ]; then
+    export INTERVALS="/scratch/frans/rna-seq/resources/wgs_calling_regions.hg38.interval_list"
 else
     export INTERVALS=""  # Will create intervals on the fly
 fi
@@ -100,7 +100,7 @@ export WORK_DIR="/scratch/frans/rna-seq"
 export BAM_DIR="/scratch/rad123/my_RNA-seq/complete_RNA/results/STAR"
 
 # Sample pairs file
-export SAMPLE_FILE="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/tumor-normal_samples.tsv"
+export SAMPLE_FILE="/scratch/frans/rna-seq/tumor-normal_samples.tsv"
 EOF
 
 echo "✓ Updated resource_paths.sh"

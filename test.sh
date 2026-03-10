@@ -1,7 +1,7 @@
 #!/bin/bash
 # Test TSV parsing to verify it works before submitting jobs
 
-SAMPLE_FILE="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/enhanced_sample_pairs_with_rg.tsv"
+SAMPLE_FILE="/scratch/frans/rna-seq/enhanced_sample_pairs_with_rg.tsv"
 
 echo "Testing TSV parsing for first 5 pairs..."
 echo ""

@@ -52,10 +52,10 @@ module load samtools
 export REFERENCE="/cvmfs/ref.mugqic/genomes/species/Homo_sapiens.GRCh38/genome/Homo_sapiens.GRCh38.fa"
 
 # Population variants
-export GNOMAD="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/af-only-gnomad.hg38.vcf.gz"
+export GNOMAD="/scratch/frans/rna-seq/resources/af-only-gnomad.hg38.vcf.gz"
 
 # Calling intervals
-export INTERVALS="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/wgs_calling_regions.hg38.interval_list"
+export INTERVALS="/scratch/frans/rna-seq/resources/wgs_calling_regions.hg38.interval_list"
 
 # Working directory
 export WORK_DIR="/scratch/frans/rna-seq"
@@ -64,7 +64,7 @@ export WORK_DIR="/scratch/frans/rna-seq"
 export BAM_DIR="/scratch/frans/rna-seq/bams_with_rg"
 
 # Sample pairs file (UPDATED to use RG BAM paths)
-export SAMPLE_FILE="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/enhanced_sample_pairs_with_rg.tsv"
+export SAMPLE_FILE="/scratch/frans/rna-seq/enhanced_sample_pairs_with_rg.tsv"
 EOF
 
 echo "Updated resource configuration: resources/resource_paths_with_rg.sh"
