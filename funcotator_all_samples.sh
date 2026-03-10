@@ -6,8 +6,8 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
 #SBATCH --array=1-1
-#SBATCH --output=logs/funcotator_%A_%a.out
-#SBATCH --error=logs/funcotator_%A_%a.err
+#SBATCH --output=/scratch/frans/rna-seq/logs/funcotator_%A_%a.out
+#SBATCH --error=/scratch/frans/rna-seq/logs/funcotator_%A_%a.err
 
 module load StdEnv/2023
 module load gatk/4.4.0.0

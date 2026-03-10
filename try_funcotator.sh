@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --array=1-1
-#SBATCH --output=logs/pass_funcotator_%A_%a.log
+#SBATCH --output=/scratch/frans/rna-seq/logs/pass_funcotator_%A_%a.log
 
 # Extract PASS variants + Annotate with Funcotator
 # Much faster than annotating all variants!

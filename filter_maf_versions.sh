@@ -5,8 +5,8 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=8G
 #SBATCH --array=1-1
-#SBATCH --output=logs/filter_mafs_%A_%a.out
-#SBATCH --error=logs/filter_mafs_%A_%a.err
+#SBATCH --output=/scratch/frans/rna-seq/logs/filter_mafs_%A_%a.out
+#SBATCH --error=/scratch/frans/rna-seq/logs/filter_mafs_%A_%a.err
 
 WORK_DIR="/scratch/frans/rna-seq"
 cd ${WORK_DIR}

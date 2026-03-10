@@ -6,8 +6,8 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
 #SBATCH --array=1-1
-#SBATCH --output=logs/vep_%A_%a.out
-#SBATCH --error=logs/vep_%A_%a.err
+#SBATCH --output=/scratch/frans/rna-seq/logs/vep_%A_%a.out
+#SBATCH --error=/scratch/frans/rna-seq/logs/vep_%A_%a.err
 
 module load apptainer
 
