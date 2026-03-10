@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=create_pon_rnaseq
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=radhika.mahajan@sinaihealth.ca
+#SBATCH --mail-user=frans.budiman@alumni.utoronto.ca
 #SBATCH --time=24:00:00
 #SBATCH --mem=96G
 #SBATCH --cpus-per-task=32

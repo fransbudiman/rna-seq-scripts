@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=vep_annotate
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=radhika.mahajan@sinaihealth.ca
+#SBATCH --mail-user=frans.budiman@alumni.utoronto.ca
 #SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G

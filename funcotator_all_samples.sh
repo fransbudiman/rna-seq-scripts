@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=funcotator
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=radhika.mahajan@sinaihealth.ca
+#SBATCH --mail-user=frans.budiman@alumni.utoronto.ca
 #SBATCH --time=48:00:00
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
