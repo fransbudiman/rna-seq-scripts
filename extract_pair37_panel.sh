@@ -1,7 +1,7 @@
 #!/bin/bash
 # Detailed examination of top candidate genes in pair_37
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 SAMPLE="pair_37"
 INPUT_MAF="${WORK_DIR}/results/funcotator_pass_only/${SAMPLE}_pass_only.maf"
 

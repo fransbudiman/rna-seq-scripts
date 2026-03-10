@@ -5,8 +5,8 @@ echo "=========================================="
 echo "Updating Sample Sheet for RG BAM Files"
 echo "=========================================="
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
-RG_BAM_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg"
+WORK_DIR="/scratch/frans/rna-seq"
+RG_BAM_DIR="/scratch/frans/rna-seq/bams_with_rg"
 
 cd $WORK_DIR
 
@@ -58,10 +58,10 @@ export GNOMAD="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/af-only-gnomad.h
 export INTERVALS="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/wgs_calling_regions.hg38.interval_list"
 
 # Working directory
-export WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+export WORK_DIR="/scratch/frans/rna-seq"
 
 # BAM files directory (UPDATED to use RG BAMs)
-export BAM_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg"
+export BAM_DIR="/scratch/frans/rna-seq/bams_with_rg"
 
 # Sample pairs file (UPDATED to use RG BAM paths)
 export SAMPLE_FILE="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/enhanced_sample_pairs_with_rg.tsv"

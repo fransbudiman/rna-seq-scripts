@@ -1,5 +1,5 @@
 #!/bin/bash
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 cd ${WORK_DIR}
 
 mkdir -p results/pileup_summaries results/contamination results/filtered_calls

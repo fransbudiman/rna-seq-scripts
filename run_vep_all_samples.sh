@@ -11,7 +11,7 @@
 
 module load apptainer
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 VEP_DATA="/scratch/rad123/vep_data"
 VEP_SIF="${VEP_DATA}/vep.sif"
 VEP_CACHE="${VEP_DATA}/homo_sapiens"

@@ -66,7 +66,7 @@ else
 fi
 
 echo -e "\n9. Setting up working directory..."
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 mkdir -p $WORK_DIR/{logs,temp,scripts,resources,results/{mutect2,filtering,metrics,pon}}
 echo "Working directory created: $WORK_DIR"
 

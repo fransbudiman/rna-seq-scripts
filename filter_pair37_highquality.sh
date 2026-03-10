@@ -1,7 +1,7 @@
 #!/bin/bash
 # Filter pair_37 MAF for high-quality variants
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 SAMPLE="pair_53"
 
 # Input MAF (somatic-only, PASS variants)

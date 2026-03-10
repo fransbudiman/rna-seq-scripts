@@ -5,8 +5,8 @@
 #SBATCH --time=24:00:00
 #SBATCH --mem=64G
 #SBATCH --cpus-per-task=8
-#SBATCH --output=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/combine_pon_rnaseq_%j.out
-#SBATCH --error=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/combine_pon_rnaseq_%j.err
+#SBATCH --output=/scratch/frans/rna-seq/logs/combine_pon_rnaseq_%j.out
+#SBATCH --error=/scratch/frans/rna-seq/logs/combine_pon_rnaseq_%j.err
 
 echo "=========================================="
 echo "Combining Individual PoN VCFs into Final Panel of Normals"
@@ -16,7 +16,7 @@ echo "=========================================="
 unset JAVA_TOOL_OPTIONS
 
 # Load modules and configuration
-source /scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/resource_paths_with_rg.sh
+source /scratch/frans/rna-seq/resources/resource_paths_with_rg.sh
 
 cd $WORK_DIR
 

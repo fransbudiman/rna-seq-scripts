@@ -8,7 +8,7 @@
 #SBATCH --output=logs/filter_mafs_%A_%a.out
 #SBATCH --error=logs/filter_mafs_%A_%a.err
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 cd ${WORK_DIR}
 source ${WORK_DIR}/resources/resource_paths_with_rg.sh
 

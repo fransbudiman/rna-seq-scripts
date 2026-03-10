@@ -1,7 +1,7 @@
 #!/bin/bash
 # Extract mutations in cancer-related genes (FIXED)
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT_DIR="${WORK_DIR}/cancer_gene_mutations"
 mkdir -p ${OUTPUT_DIR}
 

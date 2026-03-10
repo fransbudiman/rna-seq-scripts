@@ -1,7 +1,7 @@
 #!/bin/bash
 # Summarize high-risk mutations
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/high_risk_mutation_summary.txt"
 
 echo "High-Risk Thyroid Cancer Mutations" > ${OUTPUT}

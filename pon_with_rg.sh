@@ -6,8 +6,8 @@
 #SBATCH --mem=96G
 #SBATCH --cpus-per-task=32
 #SBATCH --array=1-1
-#SBATCH --output=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/create_pon_rnaseq_%A_%a.out
-#SBATCH --error=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/create_pon_rnaseq_%A_%a.err
+#SBATCH --output=/scratch/frans/rna-seq/logs/create_pon_rnaseq_%A_%a.out
+#SBATCH --error=/scratch/frans/rna-seq/logs/create_pon_rnaseq_%A_%a.err
 
 echo "=========================================="
 echo "Creating Panel of Normals for RNA-seq (Optimized)"
@@ -18,7 +18,7 @@ echo "=========================================="
 unset JAVA_TOOL_OPTIONS
 
 # Load modules and configuration
-source /scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/resource_paths_with_rg.sh
+source /scratch/frans/rna-seq/resources/resource_paths_with_rg.sh
 
 cd $WORK_DIR
 

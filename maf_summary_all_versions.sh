@@ -1,7 +1,7 @@
 #!/bin/bash
 # Generate summary for all three MAF versions
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/maf_summary_report.txt"
 
 echo "================================================" > ${OUTPUT}

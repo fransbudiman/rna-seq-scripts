@@ -94,7 +94,7 @@ else
 fi
 
 # Working directory
-export WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+export WORK_DIR="/scratch/frans/rna-seq"
 
 # BAM files directory
 export BAM_DIR="/scratch/rad123/my_RNA-seq/complete_RNA/results/STAR"

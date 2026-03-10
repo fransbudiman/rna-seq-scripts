@@ -1,7 +1,7 @@
 #!/bin/bash
 # Extract thyroid cancer-specific mutations
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/thyroid_specific_mutations.txt"
 
 # Key thyroid cancer genes

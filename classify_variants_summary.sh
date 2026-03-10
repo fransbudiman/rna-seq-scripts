@@ -1,7 +1,7 @@
 #!/bin/bash
 # Summarize variant types per sample
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/variant_classification_summary.txt"
 
 echo "Sample,Missense,Nonsense,Frameshift_Ins,Frameshift_Del,Splice_Site,Silent,Total_Coding" > ${OUTPUT}

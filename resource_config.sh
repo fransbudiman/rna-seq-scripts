@@ -22,7 +22,7 @@ export GNOMAD="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/af-only-gnomad.h
 export INTERVALS="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/wgs_calling_regions.hg38.interval_list"
 
 # Working directory
-export WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+export WORK_DIR="/scratch/frans/rna-seq"
 
 # BAM files directory
 export BAM_DIR="/scratch/rad123/my_RNA-seq/complete_RNA/results/STAR"

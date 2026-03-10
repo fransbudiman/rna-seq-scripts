@@ -6,8 +6,8 @@
 #SBATCH --mem=32G
 #SBATCH --cpus-per-task=4
 #SBATCH --array=1-2
-#SBATCH --output=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/bams_with_rg/add_rg_%A_%a.out
-#SBATCH --error=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/bams_with_rg/add_rg_%A_%a.err
+#SBATCH --output=/scratch/frans/rna-seq/logs/bams_with_rg/add_rg_%A_%a.out
+#SBATCH --error=/scratch/frans/rna-seq/logs/bams_with_rg/add_rg_%A_%a.err
 
 echo "=========================================="
 echo "Adding Read Groups to BAM Files with GATK"
@@ -20,9 +20,9 @@ module load gatk
 module load samtools
 
 # Define paths
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 INPUT_BAM_DIR="/scratch/rad123/my_RNA-seq/complete_RNA/results/STAR"
-OUTPUT_BAM_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg"
+OUTPUT_BAM_DIR="/scratch/frans/rna-seq/bams_with_rg"
 
 cd $WORK_DIR
 

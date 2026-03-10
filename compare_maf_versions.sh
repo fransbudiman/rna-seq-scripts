@@ -1,7 +1,7 @@
 #!/bin/bash
 # Compare the three MAF versions
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/version_comparison.txt"
 
 echo "MAF Version Comparison Report" > ${OUTPUT}

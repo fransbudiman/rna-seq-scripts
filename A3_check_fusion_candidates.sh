@@ -2,7 +2,7 @@
 # Identify potential fusion candidates from mutation data
 # Note: True fusion detection requires expression analysis or fusion callers
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/potential_fusions_check.txt"
 
 # Fusion genes to check

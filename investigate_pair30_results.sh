@@ -6,7 +6,7 @@ echo "Investigating pair_30 Results"
 echo "======================================"
 echo ""
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT_DIR="${WORK_DIR}/results/test_pair30"
 
 # 1. Check the VCF header

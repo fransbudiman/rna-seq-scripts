@@ -1,7 +1,7 @@
 #!/bin/bash
 # Classify samples based on mutation profile
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/thyroid_molecular_classification.csv"
 CANCER_DIR="${WORK_DIR}/cancer_gene_mutations"
 

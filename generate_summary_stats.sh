@@ -1,7 +1,7 @@
 #!/bin/bash
 # Generate comprehensive summary statistics
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT_FILE="${WORK_DIR}/pipeline_summary_report.txt"
 
 echo "========================================" > ${OUTPUT_FILE}

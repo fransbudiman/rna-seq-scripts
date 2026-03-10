@@ -1,7 +1,7 @@
 #!/bin/bash
 # Calculate Tumor Mutation Burden for all samples
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/mutation_burden_analysis.txt"
 
 echo "Sample_ID,Total_Variants,Coding_Variants,TMB_per_Mb" > ${OUTPUT}

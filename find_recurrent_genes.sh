@@ -1,7 +1,7 @@
 #!/bin/bash
 # Find genes mutated in multiple samples
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT="${WORK_DIR}/recurrent_mutations.txt"
 
 echo "Analyzing recurrent mutations across 66 samples..."

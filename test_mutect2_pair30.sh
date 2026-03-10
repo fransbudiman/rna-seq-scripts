@@ -5,8 +5,8 @@
 #SBATCH --time=24:00:00
 #SBATCH --mem=64G
 #SBATCH --cpus-per-task=8
-#SBATCH --output=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/mutect2_pair30_%j.out
-#SBATCH --error=/scratch/rad123/FINAL_MUTECT2_ANALYSIS/logs/mutect2_pair30_%j.err
+#SBATCH --output=/scratch/frans/rna-seq/logs/mutect2_pair30_%j.out
+#SBATCH --error=/scratch/frans/rna-seq/logs/mutect2_pair30_%j.err
 
 # Load modules
 module load StdEnv/2023
@@ -14,11 +14,11 @@ module load gatk
 module load samtools
 
 # Source resource paths
-source /scratch/rad123/FINAL_MUTECT2_ANALYSIS/resources/resource_paths_with_rg.sh
+source /scratch/frans/rna-seq/resources/resource_paths_with_rg.sh
 
 # Pair 30 details
-TUMOR_BAM="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg/24-13263-A-02-00_with_rg.bam"
-NORMAL_BAM="/scratch/rad123/FINAL_MUTECT2_ANALYSIS/bams_with_rg/24-12924-A-02-00_with_rg.bam"
+TUMOR_BAM="/scratch/frans/rna-seq/bams_with_rg/24-13263-A-02-00_with_rg.bam"
+NORMAL_BAM="/scratch/frans/rna-seq/bams_with_rg/24-12924-A-02-00_with_rg.bam"
 TUMOR_NAME="24-13263-A-02-00"
 NORMAL_NAME="24-12924-A-02-00"
 PAIR_ID="pair_30"

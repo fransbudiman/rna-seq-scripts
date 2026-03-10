@@ -1,7 +1,7 @@
 #!/bin/bash
 # Extract all thyroid-relevant mutations
 
-WORK_DIR="/scratch/rad123/FINAL_MUTECT2_ANALYSIS"
+WORK_DIR="/scratch/frans/rna-seq"
 OUTPUT_DIR="${WORK_DIR}/thyroid_marker_analysis"
 mkdir -p ${OUTPUT_DIR}
 
