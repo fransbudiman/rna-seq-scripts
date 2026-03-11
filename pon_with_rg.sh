@@ -23,7 +23,7 @@ source /scratch/frans/rna-seq/resources/resource_paths_with_rg.sh
 cd $WORK_DIR
 
 # Create directories for PoN
-mkdir -p results/pon/{vcfs,logs}
+mkdir -p results/pon/{vcfs,logs} temp
 
 echo "Configuration:"
 echo "  Work directory: $WORK_DIR"
