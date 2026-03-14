@@ -5,7 +5,7 @@
 #SBATCH --time=24:00:00
 #SBATCH --mem=96G
 #SBATCH --cpus-per-task=32
-#SBATCH --array=1-1
+#SBATCH --array=1-66
 #SBATCH --output=/scratch/frans/rna-seq/logs/create_pon_rnaseq_%A_%a.out
 #SBATCH --error=/scratch/frans/rna-seq/logs/create_pon_rnaseq_%A_%a.err
 
