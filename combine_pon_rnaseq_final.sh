@@ -2,7 +2,7 @@
 #SBATCH --job-name=combine_pon_rnaseq
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=frans.budiman@alumni.utoronto.ca
-#SBATCH --time=24:00:00
+#SBATCH --time=48:00:00
 #SBATCH --mem=64G
 #SBATCH --cpus-per-task=8
 #SBATCH --output=/scratch/frans/rna-seq/logs/combine_pon_rnaseq_%j.out
