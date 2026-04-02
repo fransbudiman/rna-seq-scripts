@@ -48,13 +48,12 @@ done
 
 # Show examples of unique variants
 echo ""
-echo "=== First 10 variants unique to RUN 1 ==="
-comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -10
+echo "=== Variants unique to RUN 1 ==="
+comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt
 
 echo ""
-echo "=== First 10 variants unique to RUN 2 ==="
-comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -10
-
+echo "=== Variants unique to RUN 2 ==="
+comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt
 # Cleanup
 rm -f /tmp/maf1_pos.txt /tmp/maf2_pos.txt
 
