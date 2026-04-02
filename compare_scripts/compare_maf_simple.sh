@@ -5,7 +5,27 @@ PAIR="pair_01"
 DIR1="/home/frans/scratch/rna-seq/results/funcotator_pass_only"
 DIR2="/project/rrg-bourqueg-ad/C3G/share/Lerner-Ellis_Sinai/RNA-seq/FINAL_MUTECT2_ANALYSIS/results/funcotator_pass_only"
 
+# Get column indices from header
+get_column_index() {
+    local file=$1
+    local colname=$2
+    grep "^Hugo_Symbol" "$file" | head -1 | awk -v col="$colname" 'BEGIN{FS="\t"} {
+        for(i=1; i<=NF; i++) {
+            if($i == col) {print i; exit}
+        }
+    }'
+}
+
+# Get indices for RUN 1
+GENE_COL=$(get_column_index "$DIR1/${PAIR}_pass_only.maf" "Hugo_Symbol")
+CHR_COL=$(get_column_index "$DIR1/${PAIR}_pass_only.maf" "Chromosome")
+POS_COL=$(get_column_index "$DIR1/${PAIR}_pass_only.maf" "Start_Position")
+ALT_COL=$(get_column_index "$DIR1/${PAIR}_pass_only.maf" "t_alt_count")
+REF_COL=$(get_column_index "$DIR1/${PAIR}_pass_only.maf" "t_ref_count")
+NALT_COL=$(get_column_index "$DIR1/${PAIR}_pass_only.maf" "n_alt_count")
+
 echo "=== Comparing ${PAIR}_pass_only.maf ==="
+echo "Column indices: Gene=$GENE_COL, Chr=$CHR_COL, Pos=$POS_COL, t_alt=$ALT_COL, t_ref=$REF_COL, n_alt=$NALT_COL"
 echo ""
 
 # Count total variants
@@ -55,10 +75,18 @@ comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -20 | while read pos; do
     chr=$(echo $pos | cut -d: -f1)
     start=$(echo $pos | cut -d: -f2)
     grep -v "^#\|^Hugo_Symbol" $DIR1/${PAIR}_pass_only.maf | \
-        awk -v chr="$chr" -v pos="$start" '$5==chr && $6==pos {
-            vaf = ($13 > 0 && $11 > 0) ? sprintf("%.1f", ($13/$11)*100) : "0.0"
+        awk -v chr="$chr" -v pos="$start" \
+            -v gene_col="$GENE_COL" -v chr_col="$CHR_COL" -v pos_col="$POS_COL" \
+            -v alt_col="$ALT_COL" -v ref_col="$REF_COL" -v nalt_col="$NALT_COL" \
+            'BEGIN{FS="\t"; OFS="\t"} 
+        $chr_col==chr && $pos_col==pos {
+            alt = ($alt_col != "" && $alt_col != "-") ? $alt_col : 0
+            ref = ($ref_col != "" && $ref_col != "-") ? $ref_col : 0
+            depth = alt + ref
+            n_alt = ($nalt_col != "" && $nalt_col != "-") ? $nalt_col : 0
+            vaf = (alt > 0 && depth > 0) ? sprintf("%.1f", (alt/depth)*100) : "0.0"
             printf "%s | %s:%s | %s | %s | %s | %s | %s\n", 
-                $1, $5, $6, $11, $12, $13, vaf, $83
+                $gene_col, $chr_col, $pos_col, depth, ref, alt, vaf, n_alt
         }'
 done
 
@@ -70,10 +98,18 @@ comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -20 | while read pos; do
     chr=$(echo $pos | cut -d: -f1)
     start=$(echo $pos | cut -d: -f2)
     grep -v "^#\|^Hugo_Symbol" $DIR2/${PAIR}_pass_only.maf | \
-        awk -v chr="$chr" -v pos="$start" '$5==chr && $6==pos {
-            vaf = ($13 > 0 && $11 > 0) ? sprintf("%.1f", ($13/$11)*100) : "0.0"
+        awk -v chr="$chr" -v pos="$start" \
+            -v gene_col="$GENE_COL" -v chr_col="$CHR_COL" -v pos_col="$POS_COL" \
+            -v alt_col="$ALT_COL" -v ref_col="$REF_COL" -v nalt_col="$NALT_COL" \
+            'BEGIN{FS="\t"; OFS="\t"} 
+        $chr_col==chr && $pos_col==pos {
+            alt = ($alt_col != "" && $alt_col != "-") ? $alt_col : 0
+            ref = ($ref_col != "" && $ref_col != "-") ? $ref_col : 0
+            depth = alt + ref
+            n_alt = ($nalt_col != "" && $nalt_col != "-") ? $nalt_col : 0
+            vaf = (alt > 0 && depth > 0) ? sprintf("%.1f", (alt/depth)*100) : "0.0"
             printf "%s | %s:%s | %s | %s | %s | %s | %s\n", 
-                $1, $5, $6, $11, $12, $13, vaf, $83
+                $gene_col, $chr_col, $pos_col, depth, ref, alt, vaf, n_alt
         }'
 done
 # Cleanup
