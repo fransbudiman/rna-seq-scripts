@@ -46,14 +46,36 @@ for gene in TP53 KRAS BRAF EGFR PIK3CA PTEN; do
     fi
 done
 
-# Show examples of unique variants
+# Show examples of unique variants WITH quality metrics
 echo ""
-echo "=== Variants unique to RUN 1 ==="
-comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt
+echo "=== Variants unique to RUN 1 (with quality metrics) ==="
+echo "Gene | Chr:Pos | t_depth | t_ref | t_alt | VAF% | n_alt"
+echo "--------------------------------------------------------"
+comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -20 | while read pos; do
+    chr=$(echo $pos | cut -d: -f1)
+    start=$(echo $pos | cut -d: -f2)
+    grep -v "^#\|^Hugo_Symbol" $DIR1/${PAIR}_pass_only.maf | \
+        awk -v chr="$chr" -v pos="$start" '$5==chr && $6==pos {
+            vaf = ($13 > 0 && $11 > 0) ? sprintf("%.1f", ($13/$11)*100) : "0.0"
+            printf "%s | %s:%s | %s | %s | %s | %s | %s\n", 
+                $1, $5, $6, $11, $12, $13, vaf, $83
+        }'
+done
 
 echo ""
-echo "=== Variants unique to RUN 2 ==="
-comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt
+echo "=== Variants unique to RUN 2 (with quality metrics) ==="
+echo "Gene | Chr:Pos | t_depth | t_ref | t_alt | VAF% | n_alt"
+echo "--------------------------------------------------------"
+comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -20 | while read pos; do
+    chr=$(echo $pos | cut -d: -f1)
+    start=$(echo $pos | cut -d: -f2)
+    grep -v "^#\|^Hugo_Symbol" $DIR2/${PAIR}_pass_only.maf | \
+        awk -v chr="$chr" -v pos="$start" '$5==chr && $6==pos {
+            vaf = ($13 > 0 && $11 > 0) ? sprintf("%.1f", ($13/$11)*100) : "0.0"
+            printf "%s | %s:%s | %s | %s | %s | %s | %s\n", 
+                $1, $5, $6, $11, $12, $13, vaf, $83
+        }'
+done
 # Cleanup
 rm -f /tmp/maf1_pos.txt /tmp/maf2_pos.txt
 
