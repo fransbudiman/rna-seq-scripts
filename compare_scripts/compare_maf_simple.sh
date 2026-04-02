@@ -71,7 +71,7 @@ echo ""
 echo "=== Variants unique to RUN 1 (with quality metrics) ==="
 echo "Gene | Chr:Pos | t_depth | t_ref | t_alt | VAF% | n_alt"
 echo "--------------------------------------------------------"
-comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -20 | while read pos; do
+comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | while read pos; do
     chr=$(echo $pos | cut -d: -f1)
     start=$(echo $pos | cut -d: -f2)
     grep -v "^#\|^Hugo_Symbol" $DIR1/${PAIR}_pass_only.maf | \
@@ -94,7 +94,7 @@ echo ""
 echo "=== Variants unique to RUN 2 (with quality metrics) ==="
 echo "Gene | Chr:Pos | t_depth | t_ref | t_alt | VAF% | n_alt"
 echo "--------------------------------------------------------"
-comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -20 | while read pos; do
+comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | while read pos; do
     chr=$(echo $pos | cut -d: -f1)
     start=$(echo $pos | cut -d: -f2)
     grep -v "^#\|^Hugo_Symbol" $DIR2/${PAIR}_pass_only.maf | \
@@ -112,6 +112,67 @@ comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -20 | while read pos; do
                 $gene_col, $chr_col, $pos_col, depth, ref, alt, vaf, n_alt
         }'
 done
+
+echo ""
+echo "=========================================================================="
+echo "=== POTENTIAL PROBLEMATIC VARIANTS (High VAF >25% AND High Depth >50) ==="
+echo "=========================================================================="
+echo ""
+echo "=== In RUN 1 only ==="
+echo "Gene | Chr:Pos | t_depth | t_ref | t_alt | VAF% | n_alt"
+echo "--------------------------------------------------------"
+comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | while read pos; do
+    chr=$(echo $pos | cut -d: -f1)
+    start=$(echo $pos | cut -d: -f2)
+    grep -v "^#\|^Hugo_Symbol" $DIR1/${PAIR}_pass_only.maf | \
+        awk -v chr="$chr" -v pos="$start" \
+            -v gene_col="$GENE_COL" -v chr_col="$CHR_COL" -v pos_col="$POS_COL" \
+            -v alt_col="$ALT_COL" -v ref_col="$REF_COL" -v nalt_col="$NALT_COL" \
+            'BEGIN{FS="\t"; OFS="\t"} 
+        $chr_col==chr && $pos_col==pos {
+            alt = ($alt_col != "" && $alt_col != "-") ? $alt_col : 0
+            ref = ($ref_col != "" && $ref_col != "-") ? $ref_col : 0
+            depth = alt + ref
+            n_alt = ($nalt_col != "" && $nalt_col != "-") ? $nalt_col : 0
+            vaf = (alt > 0 && depth > 0) ? (alt/depth)*100 : 0
+            if (vaf > 25 && depth > 50) {
+                vaf_str = sprintf("%.1f", vaf)
+                printf "%s | %s:%s | %s | %s | %s | %s | %s\n", 
+                    $gene_col, $chr_col, $pos_col, depth, ref, alt, vaf_str, n_alt
+            }
+        }'
+done
+
+echo ""
+echo "=== In RUN 2 only ==="
+echo "Gene | Chr:Pos | t_depth | t_ref | t_alt | VAF% | n_alt"
+echo "--------------------------------------------------------"
+comm -13 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | while read pos; do
+    chr=$(echo $pos | cut -d: -f1)
+    start=$(echo $pos | cut -d: -f2)
+    grep -v "^#\|^Hugo_Symbol" $DIR2/${PAIR}_pass_only.maf | \
+        awk -v chr="$chr" -v pos="$start" \
+            -v gene_col="$GENE_COL" -v chr_col="$CHR_COL" -v pos_col="$POS_COL" \
+            -v alt_col="$ALT_COL" -v ref_col="$REF_COL" -v nalt_col="$NALT_COL" \
+            'BEGIN{FS="\t"; OFS="\t"} 
+        $chr_col==chr && $pos_col==pos {
+            alt = ($alt_col != "" && $alt_col != "-") ? $alt_col : 0
+            ref = ($ref_col != "" && $ref_col != "-") ? $ref_col : 0
+            depth = alt + ref
+            n_alt = ($nalt_col != "" && $nalt_col != "-") ? $nalt_col : 0
+            vaf = (alt > 0 && depth > 0) ? (alt/depth)*100 : 0
+            if (vaf > 25 && depth > 50) {
+                vaf_str = sprintf("%.1f", vaf)
+                printf "%s | %s:%s | %s | %s | %s | %s | %s\n", 
+                    $gene_col, $chr_col, $pos_col, depth, ref, alt, vaf_str, n_alt
+            }
+        }'
+done
+
+echo ""
+echo "(No output = No problematic variants found - good news!)"
+echo ""
+
 # Cleanup
 rm -f /tmp/maf1_pos.txt /tmp/maf2_pos.txt
 
