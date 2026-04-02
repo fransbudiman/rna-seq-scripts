@@ -1,0 +1,74 @@
+HOW TO VERIFY UNIQUE VARIANTS ARE DUE TO RANDOMNESS, NOT ERRORS
+====================================================================
+
+Check these things to confirm it's randomness, not errors:
+
+1. CHECK IF UNIQUE VARIANTS ARE BORDERLINE QUALITY
+---------------------------------------------------
+
+For variants unique to RUN 1, check their filter status in RUN 2's unfiltered VCF:
+
+```bash
+# For variants unique to RUN 1, check their filter status in RUN 2's unfiltered VCF
+pair="pair_01"
+comm -23 /tmp/maf1_pos.txt /tmp/maf2_pos.txt | head -5 | while read pos; do
+    chr=$(echo $pos | cut -d: -f1)
+    start=$(echo $pos | cut -d: -f2)
+    echo "Checking $pos in RUN 2 unfiltered VCF:"
+    zgrep "^${chr}[[:space:]]${start}[[:space:]]" \
+        /project/rrg-bourqueg-ad/C3G/share/Lerner-Ellis_Sinai/RNA-seq/FINAL_MUTECT2_ANALYSIS/results/filtered_calls_relaxed/${pair}_filtered.vcf.gz | \
+        cut -f1,2,7
+done
+```
+
+
+2. COMPARE ALLELE FREQUENCIES OF UNIQUE VARIANTS
+-------------------------------------------------
+
+They should be low/borderline. From the MAF, check columns for unique variants:
+
+- Column 11: t_depth (tumor depth)
+- Column 12: t_ref_count 
+- Column 13: t_alt_count
+- VAF = t_alt_count / t_depth should be near threshold (~5-10%)
+
+
+3. CHECK DISTRIBUTION ACROSS ALL 66 SAMPLES
+--------------------------------------------
+
+If randomness: ~0.3-0.5% discordance evenly distributed
+If error: concentrated in specific samples
+
+Run the full comparison script and check if discordance is uniform.
+
+
+4. VERIFY FILTER REASONS IN VCF
+--------------------------------
+
+Check why unique variants failed in the other run:
+
+```bash
+zgrep -v "^#" /scratch/frans/rna-seq/results/filtered_calls_relaxed/pair_01_filtered.vcf.gz | \
+    grep -v "PASS" | cut -f7 | sort | uniq -c
+```
+
+Common expected filters: weak_evidence, strand_bias, orientation_bias
+
+
+WHAT TO EXPECT IF IT'S JUST RANDOMNESS:
+========================================
+
+✓ Unique variants have borderline quality scores
+✓ Low allele frequencies (5-15%)
+✓ Failed by filters like weak_evidence or strand_bias in the other run
+✓ Evenly distributed across all 66 samples
+✓ Not concentrated in specific genes/regions
+
+
+RED FLAGS INDICATING A PROBLEM:
+================================
+
+✗ High VAF variants (>20%) missing in one run
+✗ All discordance in 1-2 samples
+✗ Missing well-known mutations (TP53, BRAF, etc.)
+✗ One run systematically has way more/fewer variants per sample
